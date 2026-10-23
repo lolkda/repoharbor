@@ -57,6 +57,32 @@ chown -R 10001:10001 data
 # 然后把 compose 中的 repoharbor_data:/data 改为 ./data:/data
 ```
 
+## Docker Hub 镜像发布
+
+[`.github/workflows/docker.yml`](.github/workflows/docker.yml) 会自动构建并推送 `linux/amd64` 与 `linux/arm64` 双架构镜像。
+
+首次使用需要在仓库 **Settings → Secrets and variables → Actions** 添加两个 secret：
+
+| Secret | 说明 |
+|---|---|
+| `DOCKERHUB_USERNAME` | Docker Hub 用户名 |
+| `DOCKERHUB_TOKEN` | Docker Hub Access Token（建议只给 Read & Write 权限） |
+
+推送后的镜像名为 `<DOCKERHUB_USERNAME>/repoharbor`。触发规则：
+
+- 推送到 `main`：`main`、`sha-xxxxxxx`、`latest`
+- 推送 `v1.2.3` 这类 tag：`1.2.3`、`1.2`、`sha-xxxxxxx`、`latest`
+- Pull Request：只构建不推送，用于验证
+- 也可在 Actions 页面手动 `workflow_dispatch`
+
+未配置上述 secret 时工作流只构建、不推送，不会因为缺少凭据而失败。
+
+多架构镜像按「各架构单独构建 → 推送 digest → 合并 manifest」实现，拉取时 Docker 会自动选择匹配架构：
+
+```bash
+docker pull <DOCKERHUB_USERNAME>/repoharbor:latest
+```
+
 ## 环境变量
 
 | 变量 | 默认值 | 说明 |
