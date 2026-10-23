@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
-import { Boxes, Menu, Settings, LogOut, X, Anchor } from 'lucide-react'
+import { Boxes, Menu, Settings, LogOut, X, Library } from 'lucide-react'
 import { useAuth } from '../lib/auth'
 import { useEvents } from '../lib/useEvents'
 import { cn } from '../lib/utils'
@@ -20,7 +20,7 @@ export function AppShell() {
     <div className="flex h-full flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground">
       <div className="flex items-center gap-3 px-5 pb-6 pt-6">
         <div className="grid h-10 w-10 place-items-center rounded-2xl bg-sidebar-primary text-sidebar-primary-foreground shadow-lg shadow-primary/20">
-          <Anchor className="h-5 w-5" />
+          <Library className="h-5 w-5" />
         </div>
         <div>
           <div className="text-sm font-black tracking-[0.18em] text-sidebar-foreground">REPOHARBOR</div>
@@ -75,7 +75,7 @@ export function AppShell() {
       <div className="lg:pl-64">
         <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-border bg-background/80 px-4 backdrop-blur-xl lg:hidden">
           <button onClick={() => setOpen(true)} className="rounded-xl border border-border bg-card p-2 text-foreground shadow-sm"><Menu className="h-5 w-5" /></button>
-          <div className="flex items-center gap-2 text-sm font-black tracking-[0.16em] text-foreground"><Anchor className="h-4 w-4 text-primary" />REPOHARBOR</div>
+          <div className="flex items-center gap-2 text-sm font-black tracking-[0.16em] text-foreground"><Library className="h-4 w-4 text-primary" />REPOHARBOR</div>
           <div className="w-9" />
         </header>
         <main className="mx-auto w-full max-w-[1500px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8" key={location.pathname}>

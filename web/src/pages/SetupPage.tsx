@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { Anchor, ShieldCheck } from 'lucide-react'
+import { Library, ShieldCheck } from 'lucide-react'
 import { useAuth } from '../lib/auth'
 import { Button, Input } from '../components/ui'
 
@@ -36,7 +36,7 @@ export function SetupPage() {
       <div className="pointer-events-none absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-chart-2/10 blur-3xl" />
       <div className="relative w-full max-w-lg">
         <div className="mb-8 flex items-center gap-3 text-foreground">
-          <div className="grid h-12 w-12 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-xl shadow-primary/20"><Anchor className="h-6 w-6" /></div>
+          <div className="grid h-12 w-12 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-xl shadow-primary/20"><Library className="h-6 w-6" /></div>
           <div>
             <div className="text-lg font-black tracking-[0.2em]">REPOHARBOR</div>
             <div className="text-[10px] font-semibold tracking-[0.24em] text-muted-foreground">FIRST RUN SETUP</div>
