@@ -77,7 +77,7 @@ chown -R 10001:10001 data
 
 未配置上述 secret 时工作流只构建、不推送，不会因为缺少凭据而失败。
 
-多架构镜像按「各架构单独构建 → 推送 digest → 合并 manifest」实现，拉取时 Docker 会自动选择匹配架构：
+多架构镜像按「各架构单独构建 → 推送 digest → 合并 manifest」实现：`amd64` 使用 `ubuntu-latest`，`arm64` 使用 GitHub 原生 `ubuntu-24.04-arm` runner，不使用 QEMU 模拟。拉取时 Docker 会自动选择匹配架构：
 
 ```bash
 docker pull <DOCKERHUB_USERNAME>/repoharbor:latest
